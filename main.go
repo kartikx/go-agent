@@ -24,7 +24,9 @@ func main() {
 		return string(text), nil
 	}
 
-	agent := NewAgent(&client, getUserMessage)
+	tools := []ToolDefinition{ReadFileDefinition}
+
+	agent := NewAgent(&client, getUserMessage, tools)
 
 	err := agent.run(context.TODO())
 
